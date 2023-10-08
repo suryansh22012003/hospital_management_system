@@ -1,0 +1,221 @@
+/////////////////////////////  Hospital Management System  /////////////////////////////
+
+
+/////////////////////////////   Header Files    /////////////////////////////
+#include<iostream>
+#include<conio.h>
+#include<fstream>
+#include<iomanip>
+#include<windows.h>
+
+/////////////////////////////  Function Declaration  /////////////////////////////
+void menu();
+void pascode();
+void cpascode();
+
+using namespace std;
+
+/////////////////////////////  Class One   /////////////////////////////
+
+class one{
+    public:
+    virtual void get()=0;
+    virtual void show()=0;
+
+};
+/////////////////////////////   Class Information   /////////////////////////////
+
+class info : public one{
+    public :
+    char name[50],time[50];
+    int num, age ;
+    void get(){
+        system("cls");
+        cin.sync();
+        cout<<"\n Enter the patient name :";
+        cin.getline(name,50);
+        cout<<"\n Enter the appointment time :";
+        cin.getline(time,50);
+        cout<<"\n Enter the age :";
+        cin>>age;
+        cout<<"\n Enter the appointment no. :";
+        cin>>num;
+
+    }
+    void show(){
+        cout<<"\nName"<<name;
+        cout<<"\nAge"<<age;
+        cout<<"\nNo."<<num;
+        cout<<"\nTime"<<time;
+    }
+
+
+};
+
+/////////////////////////////   Class Rana   /////////////////////////////
+
+
+class rana : public info{
+    public:
+    info a1;
+    void get(){
+        system("cls");
+        ofstream out("rana.txt",ios::app | ios::binary);
+        a1.get();
+        out.write((char*)&a1,sizeof(info));
+        out.close();
+        cout<<"Your entry has been saved";
+        getch();
+        menu();
+    }
+    void show(){
+        ifstream in("rana.txt");
+        if (in==NULL){
+            cout<<"\nPress any key to continue";
+            getch();
+            menu();
+
+        }
+        else{
+            while (!in.eof()){
+                in.read((char*)&a1,sizeof(info));
+                a1.show();
+
+            }
+            in.close();
+            
+        }
+        
+        
+    }
+};
+
+/////////////////////////////   Class wak   /////////////////////////////
+
+
+class rana : public info{
+    public:
+    info a1;
+    void get(){
+        system("cls");
+        ofstream out("wak.txt",ios::app | ios::binary);
+        a1.get();
+        out.write((char*)&a1,sizeof(info));
+        out.close();
+        cout<<"Your entry has been saved";
+        getch();
+        menu();
+    }
+    void show(){
+        ifstream in("wak.txt");
+        if (in==NULL){
+            cout<<"\nPress any key to continue";
+            getch();
+            menu();
+
+        }
+        else{
+            while (!in.eof()){
+                in.read((char*)&a1,sizeof(info));
+                a1.show();
+
+            }
+            in.close();
+            
+        }
+        
+        
+    }
+};
+
+
+/////////////////////////////   Class Rana   /////////////////////////////
+
+
+class rana : public info{
+    public:
+    info a1;
+    void get(){
+        system("cls");
+        ofstream out("ahm.txt",ios::app | ios::binary);
+        a1.get();
+        out.write((char*)&a1,sizeof(info));
+        out.close();
+        cout<<"Your entry has been saved";
+        getch();
+        menu();
+    }
+    void show(){
+        ifstream in("ahm.txt");
+        if (in==NULL){
+            cout<<"\nPress any key to continue";
+            getch();
+            menu();
+
+        }
+        else{
+            while (!in.eof()){
+                in.read((char*)&a1,sizeof(info));
+                a1.show();
+
+            }
+            in.close();
+            
+        }
+        
+        
+    }
+};
+
+
+/////////////////////////////   Class Staff   /////////////////////////////
+
+
+class staff:public one{
+    public:
+    char all[999];
+    char name[50],age[20],sal[30],pos[20];
+    void get(){
+        ofstream out("staff.txt",ios::app);{
+        system("cls");
+        cin.sync();
+        cout<<"\n Enter the name :";
+        cin.getline(name,50);
+        cout<<"\n Enter the age time :";
+        cin.getline(age,20);
+        cout<<"\n Enter the salary :";
+        cin.getline(sal,30);
+        cout<<"\n Enter the working position :";
+        cin.getline(pos,20);
+      }
+      out<<"\nName :"<<"\nAge :"<<age<<"\nSalary :"<<sal<<"\nposition :"<<pos;
+      out.close();
+      cout<<"\n\n Your Information has been saved :\n\t\t\tPress";
+      getch();
+      menu();
+    }
+    void show(){
+        ifstream in ("staff.txt");
+        if(!in){
+            cout<<"File open error";
+        }
+        while (!(EOF()))
+        {
+            in.getline(all,999);
+            cout<<all<<endl;
+
+        }
+        in.close();
+        cout<<"\n\n\t\t Press Any Key To Continue";
+        getch();
+        menu();
+
+    }
+};
+
+
+
+/////////////////////////////   Class information   /////////////////////////////
+class information{
+     
+};
